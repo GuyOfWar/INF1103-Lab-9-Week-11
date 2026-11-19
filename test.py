@@ -7,6 +7,9 @@ from Inventory import Inventory
 from Supplier import Supplier
 from Order import Order
 from CanBeShipped import CanBeShipped
+from DiscountStrategy import DiscountStrategy
+from PercentageDiscount import PercentageDiscount
+from BulkDiscount import BulkDiscount
 supplier1 = Supplier(101, "ABC Supplies", "abc@gmail.com")
 supplier2 = Supplier(102, "DEF Supplies", "def@hotmail.com")
 inventory_A = Inventory()
@@ -72,3 +75,15 @@ print("End Test substitutability\n")
 inventory_C.add_product(product1)
 inventory_C.add_product(product2)
 inventory_C.display_all()
+
+#Lab 9 part 2.3
+print("Lab 9 part 2.3 Test")
+order3 = Order("0003", BulkDiscount(200, 20))
+order3.add_order_line(product1, 3)
+order3.add_order_line(product2, 2)
+print("Bulk discount (200,20)")
+order3.display_order()
+order3.set_discount(PercentageDiscount(10))
+print("Percentage discount 10%")
+order3.display_order()
+print("End Lab 9 part 2.3 test")
