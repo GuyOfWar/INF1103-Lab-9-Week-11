@@ -10,6 +10,7 @@ from CanBeShipped import CanBeShipped
 from DiscountStrategy import DiscountStrategy
 from PercentageDiscount import PercentageDiscount
 from BulkDiscount import BulkDiscount
+from StudentDiscount import StudentDiscount
 supplier1 = Supplier(101, "ABC Supplies", "abc@gmail.com")
 supplier2 = Supplier(102, "DEF Supplies", "def@hotmail.com")
 inventory_A = Inventory()
@@ -87,3 +88,16 @@ order3.set_discount(PercentageDiscount(10))
 print("Percentage discount 10%")
 order3.display_order()
 print("End Lab 9 part 2.3 test")
+print("Lab 9 part 2.4 Student Discount Test")
+order3.set_discount(StudentDiscount())
+print("Student Discount ($5 off)")
+order3.display_order()
+order4 = Order("0004")
+order4.add_order_line(product1, 3)
+order4.add_order_line(product2, 2)
+discount = PercentageDiscount(10)
+order3.set_discount(discount)
+order4.set_discount(discount)
+order3.display_order()
+order4.display_order()
+print("End Lab 9 part 2.4 test")

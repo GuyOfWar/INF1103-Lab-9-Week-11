@@ -23,4 +23,8 @@ venv/
 *.jpeg
 *.docx
 
+#tmp and temp files
+*.tmp
+*.temp
+
 #Ignore Specific files
