@@ -11,6 +11,8 @@ from DiscountStrategy import DiscountStrategy
 from PercentageDiscount import PercentageDiscount
 from BulkDiscount import BulkDiscount
 from StudentDiscount import StudentDiscount
+from ProductFactory import ProductFactory
+
 supplier1 = Supplier(101, "ABC Supplies", "abc@gmail.com")
 supplier2 = Supplier(102, "DEF Supplies", "def@hotmail.com")
 inventory_A = Inventory()
@@ -18,8 +20,10 @@ inventory_B = Inventory()
 inventory_C = Inventory()
 order1 = Order("0001")
 order2 = Order("0002")
-product1 = PhysicalProduct("P001", "Laptop", 1200.00, 15, 37.00, 1, supplier1)
-product2 = DigitalProduct("P002", "Mouse", 25.50, 40, 0.50, 1, supplier2)
+product1 = ProductFactory.create("P001", "Laptop", 1200.00, 15, 37.00, 1, supplier1)
+product2 = ProductFactory.create("P002", "Mouse", 25.50, 40, 0.50, 2, supplier2)
+print(product1)
+print(product2)
 
 def show_product_details(product: Product) -> None:
     product.display_information()
