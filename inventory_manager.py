@@ -14,6 +14,18 @@ product2 = PhysicalProduct("P002", "Mouse", 25.50, 40, 0.18, 1, supplier1)
 product3 = DigitalProduct("P003", "Photo", 45.00, 40, 0.50, 2, supplier2)
 product4 = DigitalProduct("P004", "Video", 299.99, 10, 3.80, 2, supplier2)
 newproduct = ()
+
+def get_positive_float(prompt: str) -> float: 
+    while True: 
+        try: 
+            value = float(input(prompt)) 
+            if value <= 0: 
+                print("Please enter a number greater than zero.") 
+                continue 
+            return value 
+        except ValueError: 
+            print("Invalid Input! Please enter a valid number.")
+
 def title_display(): #print out title
     print("========================================")
     print("INVENTORY MANAGEMENT SYSTEM")
@@ -62,15 +74,7 @@ def add_product(): #option 2
         else:
             break
     Pname= input("Product Name: ").title()
-    while True: #Price input check
-        try: #converts input to float without crashing if it fails by jumping to except block
-            Price = float(input("Price: "))
-            if Price < 0:
-                print("Price cannot be negative. Please try again.")
-                continue
-            break  # Exit loop if input is valid
-        except ValueError: #when input is not numbers
-            print("Invalid input! Please enter a valid number.")
+    Price = get_positive_float("Price: ") #Price input check
     while True: #Quantity input check
         try: #converts input to int without crashing if it fails by jumping to except block
             Quantity = int(input("Stock Quantity: "))
@@ -84,28 +88,12 @@ def add_product(): #option 2
         try: #converts input to int without crashing if it fails by jumping to except block
             Ptype = int(input("Choose Product Type(key in 1 for Physical or 2 for Digital): "))
             if Ptype == 1:
-                while True: #Physical Product check
-                    try:
-                        Pweight = float(input("Please enter weight of product: "))
-                        if Pweight < 0:
-                            print("Weight cannot be negative. Please try again.")
-                            continue
-                        break # Exit loop if input is valid
-                    except ValueError: #when input is not numbers
-                        print("Invalid input! Please enter a valid number.")
+                Pweight = get_positive_float("Please enter weight of product: ") #Physical Product check
                 Psupplier = supplier_option()
                 new_product= PhysicalProduct(Pid, Pname, Price, Quantity, Pweight, Ptype, Psupplier) #creates new Physical Product
                 break
             elif Ptype == 2:
-                while True: #Digital Product check
-                    try:
-                        Psize = float(input("Please enter download size of product: "))
-                        if Psize < 0:
-                            print("Download size cannot be negative. Please try again.")
-                            continue
-                        break # Exit loop if input is valid
-                    except ValueError: #when input is not numbers
-                        print("Invalid input! Please enter a valid number.")
+                Psize = get_positive_float("Please enter download size of product: ") #Digital Product check
                 Psupplier = supplier_option()
                 new_product= DigitalProduct(Pid, Pname, Price, Quantity, Psize, Ptype, Psupplier) #creates new Digital Product
                 break
