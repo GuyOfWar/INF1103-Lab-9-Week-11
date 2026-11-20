@@ -15,26 +15,28 @@ class Inventory:
                 supplier_data["name"],
                 supplier_data["contact_email"]
             )
-            if product_data["product type"] == 1:
+            if product_data["product_type"] == 1:
                 product = PhysicalProduct(
                     product_data["product_id"],
                     product_data["name"],
                     product_data["price"],
                     product_data["stock"],
                     product_data["weight"],
-                    product_data["product type"],
+                    product_data["product_type"],
                     supplier
                 )
-            elif product_data["product type"] == 2:
+            elif product_data["product_type"] == 2:
                 product = DigitalProduct(
                     product_data["product_id"],
                     product_data["name"],
                     product_data["price"],
                     product_data["stock"],
                     product_data["download size"],
-                    product_data["product type"],
+                    product_data["product_type"],
                     supplier
                 )
+            else:
+                raise ValueError (f"Unknown product type: {product_data['product_type']}")
             self.__inventory_list.append(product)
     
     def find_product(self, product_id: str) -> Product | None: #formerly product_id_check

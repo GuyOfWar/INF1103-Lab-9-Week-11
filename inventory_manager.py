@@ -5,14 +5,15 @@ from Inventory import Inventory
 from DigitalProduct import DigitalProduct
 from PhysicalProduct import PhysicalProduct
 from Supplier import Supplier
+from ProductFactory import ProductFactory
 prompt = int(0)
 inventory = Inventory() #creating inventory object from Inventory class
 supplier1 = Supplier(101, "ABC Supplies", "abc@gmail.com")
 supplier2 = Supplier(102, "DEF Supplies", "def@hotmail.com")
-product1 = PhysicalProduct("P001", "Laptop", 1200.00, 15, 3.00, 1, supplier1) #creating product from Product class via init
-product2 = PhysicalProduct("P002", "Mouse", 25.50, 40, 0.18, 1, supplier1)
-product3 = DigitalProduct("P003", "Photo", 45.00, 40, 0.50, 2, supplier2)
-product4 = DigitalProduct("P004", "Video", 299.99, 10, 3.80, 2, supplier2)
+product1 = ProductFactory.create("P001", "Laptop", 1200.00, 15, 3.00, 1, supplier1) #creating product from Product class via init
+product2 = ProductFactory.create("P002", "Mouse", 25.50, 40, 0.18, 1, supplier1)
+product3 = ProductFactory.create("P003", "Photo", 45.00, 40, 0.50, 2, supplier2)
+product4 = ProductFactory.create("P004", "Video", 299.99, 10, 3.80, 2, supplier2)
 newproduct = ()
 
 def get_positive_float(prompt: str) -> float: 

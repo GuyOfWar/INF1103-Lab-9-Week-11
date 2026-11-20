@@ -4,7 +4,7 @@ class Product(ABC):
     def __init__(self, product_id: str, name: str, price: float, stock: int, supplier: Supplier) -> None: #init variables
         if price <= 0:
             raise ValueError("Price cannot be less than zero.")
-        if stock <= 0:
+        if stock < 0:
             raise ValueError("Stock quantity cannot be less than zero.")
         self.__product_id = product_id
         self.__name = name

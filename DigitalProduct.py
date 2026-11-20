@@ -20,7 +20,7 @@ class DigitalProduct(Product):
             "price": self.price(),
             "stock": self.stock(),
             "download size": self.__download_size,
-            "product type": self.__type,
+            "product_type": self.__type,
             "supplier": {
             "supplier_id": self.supplier().supplier_id(),
             "name": self.supplier().name(),

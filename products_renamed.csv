@@ -1,0 +1,6 @@
+product_id,name,price,stock_quantity,weight,product_type
+P001,Desk Lamp,25.00,10,5.0,1
+D001,Photo Editor,49.90,100,25,2
+S001,Installation,30.00,5,10,1
+P002,Office Chair,50,3,15,1 
+P003,Monitor Stand,39.50,7,3.00,1
