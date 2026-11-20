@@ -34,6 +34,6 @@ class PhysicalProduct(Product):
 
     def calculate_shipping_cost(self) -> None:
         shipcost = self.stock() * self.__weight * 0.2 + 3
-        print(f"Shipping cost: {shipcost:.2f}")
+        print(f"Shipping cost: ${shipcost:.2f}")
     
 CanBeShipped.register(PhysicalProduct) #to register Physical as a virtual class of CanBeShipped

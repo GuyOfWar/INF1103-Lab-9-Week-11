@@ -89,17 +89,16 @@ def add_product(): #option 2
         try: #converts input to int without crashing if it fails by jumping to except block
             Ptype = int(input("Choose Product Type(key in 1 for Physical or 2 for Digital): "))
             if Ptype == 1:
-                Pweight = get_positive_float("Please enter weight of product: ") #Physical Product check
+                Pvalue = get_positive_float("Please enter weight of product: ") #Physical Product check
                 Psupplier = supplier_option()
-                new_product= PhysicalProduct(Pid, Pname, Price, Quantity, Pweight, Ptype, Psupplier) #creates new Physical Product
-                break
             elif Ptype == 2:
-                Psize = get_positive_float("Please enter download size of product: ") #Digital Product check
+                Pvalue = get_positive_float("Please enter download size of product: ") #Digital Product check
                 Psupplier = supplier_option()
-                new_product= DigitalProduct(Pid, Pname, Price, Quantity, Psize, Ptype, Psupplier) #creates new Digital Product
-                break
             else:
                 print("Invalid input! Please enter either 1 or 2.")
+                continue
+            new_product= ProductFactory.create(Pid, Pname, Price, Quantity, Pvalue, Ptype, Psupplier) # creates new Product
+            break
         except ValueError: #when input is not numbers
             print("Invalid input! Please enter a valid number.")
     print("\nProduct added successfully!\n")

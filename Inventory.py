@@ -1,6 +1,7 @@
 from Product import Product
 from DigitalProduct import DigitalProduct
 from PhysicalProduct import PhysicalProduct
+from ProductFactory import ProductFactory
 from Supplier import Supplier
 class Inventory:
     def __init__(self) -> None:
@@ -15,28 +16,15 @@ class Inventory:
                 supplier_data["name"],
                 supplier_data["contact_email"]
             )
-            if product_data["product_type"] == 1:
-                product = PhysicalProduct(
-                    product_data["product_id"],
-                    product_data["name"],
-                    product_data["price"],
-                    product_data["stock"],
-                    product_data["weight"],
-                    product_data["product_type"],
-                    supplier
-                )
-            elif product_data["product_type"] == 2:
-                product = DigitalProduct(
-                    product_data["product_id"],
-                    product_data["name"],
-                    product_data["price"],
-                    product_data["stock"],
-                    product_data["download size"],
-                    product_data["product_type"],
-                    supplier
-                )
-            else:
-                raise ValueError (f"Unknown product type: {product_data['product_type']}")
+            product = ProductFactory.create(
+                product_data["product_id"],
+                product_data["name"],
+                product_data["price"],                    product_data["stock"],
+                product_data["weight"] if product_data["product_type"] == 1
+                else product_data["product_type"],
+                product_data["product_type"],
+                supplier
+            )
             self.__inventory_list.append(product)
     
     def find_product(self, product_id: str) -> Product | None: #formerly product_id_check
